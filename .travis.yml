@@ -1,0 +1,13 @@
+language: generic
+
+env:
+  global:
+    - SHAPES_DIR="shapes"
+    - DATA_DIR="data"
+    - REPORT_FILE="report.xml"
+    - SHACL_URL="https://upload.uni-jena.de/data/5d225049441d46.29318295/shaclci.jar"
+
+before_script:
+  - wget $SHACL_URL
+
+script: java -jar shaclci.jar --data $DATA_DIR --shapes $SHAPES_DIR --outfile $REPORT_FILE
