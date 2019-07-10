@@ -1,0 +1,34 @@
+# Example data, sourced and slightly adapted from the W3C SHACL recommendation:
+# https://www.w3.org/TR/shacl
+
+@prefix ex: <http://example.org/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Bob
+	a ex:Person ;
+	ex:firstName "Robert" ;
+	ex:lastName "Coin" ;
+	ex:age 23 ;
+	ex:gender ex:male ;
+	ex:knows ex:Alice ;
+	ex:address [ a ex:PostalAddress ; ex:city ex:Berlin ] ;
+	ex:birthDate "May 5th 1990" ;
+	ex:password "123456789" ;
+	ex:bCode "b101" ;
+	ex:label "Bob"@en .
+
+ex:Alice
+	a ex:Person ;
+	ex:firstName "Alice" ;
+	ex:lastName "Smith" ;
+	ex:age 22 ;
+	ex:gender ex:female ;
+	ex:knows ex:Bob ;
+	ex:password "1234567890ABC" ;
+	ex:birthDate "October 3rd 1989" ;
+	ex:label "Alice" ;
+	ex:label "Alice"@en ;
+	ex:label "Alice"@fr .

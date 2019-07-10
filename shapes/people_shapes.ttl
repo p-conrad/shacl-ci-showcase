@@ -1,0 +1,97 @@
+# Example shapes, sourced from the W3C SHACL recommendation:
+# https://www.w3.org/TR/shacl
+
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/ns#> .
+
+ex:ClassExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:property [
+		sh:path ex:address ;
+		sh:class ex:PostalAddress ;
+	] .
+
+ex:DatatypeExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:property [
+		sh:path ex:age ;
+		sh:datatype xsd:integer ;
+	] .
+
+ex:MinCountExampleShape
+	a sh:PropertyShape ;
+	sh:targetClass ex:Person ;
+	sh:path ex:firstName ;
+	sh:minCount 1 .
+
+ex:MaxCountExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:property [
+		sh:path ex:birthDate ;
+		sh:maxCount 1 ;
+	] .
+
+ex:NumericRangeExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:property [
+		sh:path ex:age ;
+		sh:minInclusive 0 ;
+		sh:maxInclusive 150 ;
+	] .
+
+ex:PasswordExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:property [
+		sh:path ex:password ;
+		sh:minLength 8 ;
+		sh:maxLength 30 ;
+	] .
+
+ex:PatternExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:property [
+		sh:path ex:bCode ;
+		sh:pattern "^B" ;    # starts with 'B'
+		sh:flags "i" ;       # Ignore case
+	] .
+
+ex:UniqueLangExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:property [
+		sh:path ex:label ;
+		sh:uniqueLang true ;
+	] .
+
+ex:XoneConstraintExampleShape
+	a sh:NodeShape ;
+	sh:targetClass ex:Person ;
+	sh:xone (
+		[
+			sh:property [
+				sh:path ex:fullName ;
+				sh:minCount 1 ;
+			]
+		]
+		[
+			sh:property [
+				sh:path ex:firstName ;
+				sh:minCount 1 ;
+			] ;
+			sh:property [
+				sh:path ex:lastName ;
+				sh:minCount 1 ;
+			]
+		]
+	) .
