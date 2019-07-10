@@ -32,3 +32,9 @@ ex:Alice
 	ex:label "Alice" ;
 	ex:label "Alice"@en ;
 	ex:label "Alice"@fr .
+
+ex:Dory
+	a ex:Person ;
+	ex:firstName "Dory" ;
+	ex:lastName "Dounce" ;
+	ex:age "27" .
